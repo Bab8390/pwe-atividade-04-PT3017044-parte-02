@@ -1,0 +1,15 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+p::first-letter {
+  font-size: 3em; /* Aumenta o tamanho da primeira letra */
+  color: red; /* Define a cor da primeira letra */
+  float: left; /* Posiciona a primeira letra à esquerda */
+  line-height: 1; /* Remove o espaçamento da linha */
+  margin-right: 0.1em; /* Adiciona um pequeno espaçamento entre a primeira letra e o resto do texto */
+}
+img {
+  width: 200px; /* Adjust width as needed */
+  height: auto; /* Keep aspect ratio */
+}
