@@ -1,91 +1,41 @@
-const canvas = document.getElementById('gameCanvas');
-const ctx = canvas.getContext('2d');
+let slideIndex = 1;
+showSlides(slideIndex);
 
-// Dimensões do canvas
-const canvasWidth = canvas.width;
-const canvasHeight = canvas.height;
-
-// Bola
-let ballX = canvasWidth / 2;
-let ballY = canvasHeight - 50;
-let ballRadius = 10;
-let ballSpeedX = 2;
-let ballSpeedY = -4;
-
-// Cesto
-let basketX = canvasWidth / 2;
-let basketY = 10;
-let basketWidth = 50;
-let basketHeight = 10;
-
-// Placar
-let score = 0;
-
-// Função para desenhar a bola
-function drawBall() {
-  ctx.beginPath();
-  ctx.arc(ballX, ballY, ballRadius, 0, Math.PI * 2);
-  ctx.fillStyle = 'orange';
-  ctx.fill();
-  ctx.closePath();
+function plusSlides(n) {
+  showSlides(slideIndex += n);
 }
 
-// Função para desenhar o cesto
-function drawBasket() {
-  ctx.fillStyle = 'brown';
-  ctx.fillRect(basketX - basketWidth / 2, basketY, basketWidth, basketHeight);
+function currentSlide(n) {
+  showSlides(slideIndex = n);
 }
 
-// Função para atualizar o placar
-function updateScore() {
-  ctx.font = '20px Arial';
-  ctx.fillStyle = 'black';
-  ctx.fillText('Placar: ' + score, 10, 30);
-}
-
-// Função para atualizar a posição da bola
-function updateBall() {
-  ballX += ballSpeedX;
-  ballY += ballSpeedY;
-
-  // Colisão com as bordas
-  if (ballX + ballRadius > canvasWidth || ballX - ballRadius < 0) {
-    ballSpeedX = -ballSpeedX;
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
   }
-  if (ballY - ballRadius < 0) {
-    ballSpeedY = -ballSpeedY;
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
   }
-
-  // Colisão com o cesto
-  if (ballX > basketX - basketWidth / 2 &&
-      ballX < basketX + basketWidth / 2 &&
-      ballY + ballRadius > basketY &&
-      ballY < basketY + basketHeight) {
-    score++;
-    ballX = canvasWidth / 2;
-    ballY = canvasHeight - 50;
-  }
-
-  // Bola cai fora do canvas
-  if (ballY + ballRadius > canvasHeight) {
-    ballX = canvasWidth / 2;
-    ballY = canvasHeight - 50;
-  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
 }
 
-// Função para limpar o canvas
-function clearCanvas() {
-  ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-}
+let slideIndex = 0;
+showSlides();
 
-// Função para atualizar o jogo
-function updateGame() {
-  clearCanvas();
-  updateBall();
-  drawBall();
-  drawBasket();
-  updateScore();
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}
+  slides[slideIndex-1].style.display = "block";
+  setTimeout(showSlides, 2000);
 }
-
-// Iniciar o jogo
-setInterval(updateGame, 10);
