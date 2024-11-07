@@ -1,10 +1,14 @@
-#astronauta {
-  width: 50%;
-  height: auto;
-  border-radius: 50%;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+.grid-container {
+  display: inline-grid;
+  grid-template-columns: auto auto;
+}
+
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 0px solid rgba(0, 0, 0, 0.8);
+  padding: 0px;
+  font-size: 12px;
+  text-align: center;
 }
 .rounded-form {
   border-radius: 10px; 
@@ -95,7 +99,6 @@ textarea {
   </div>
 </div>
 
-* {box-sizing:border-box}
 
 /* Slideshow container */
 .slideshow-container {
@@ -104,7 +107,6 @@ textarea {
   margin: auto;
 }
 
-/* Hide the images by default */
 .mySlides {
   display: none;
 }
