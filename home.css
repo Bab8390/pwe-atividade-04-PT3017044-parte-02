@@ -100,63 +100,30 @@ textarea {
 </div>
 
 
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+#conteudo {
+  width: 100%;
+  float: right;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 /* Slideshow container */
 .slideshow-container {
-  max-width: 1000px;
+  max-width: 75%;
   position: relative;
   margin: auto;
+  overflow: hidden; /* Limita o conteúdo dentro do contêiner */
 }
 
-.mySlides {
-  display: none;
-}
-
-/* Next & previous buttons */
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  margin-top: -22px;
-  padding: 16px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-}
-
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
-}
-
-/* Caption text */
-.text {
-  color: #f2f2f2;
-  font-size: 15px;
-  padding: 8px 12px;
-  position: absolute;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
-}
-
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
 
 /* The dots/bullets/indicators */
 .dot {
@@ -170,17 +137,79 @@ textarea {
   transition: background-color 0.6s ease;
 }
 
+
+
 .active, .dot:hover {
   background-color: #717171;
 }
 
-/* Fading animation */
-.fade {
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  color: white;
+  background-color: rgba(7, 7, 7, 0.5); /* Fundo semi-transparente para não cobrir totalmente a imagem */
+  backdrop-filter: blur(32px);
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 3px;
+  user-select: none;
+  transform: translateY(-50%); /* Centraliza verticalmente */
+  z-index: 1; /* Garante que os botões fiquem acima das imagens */
+}
+
+/* Botão "Prev" alinhado à esquerda */
+.prev {
+  left: 10px; /* Posiciona o botão dentro da borda esquerda da imagem */
+  border-radius: 8px;
+}
+
+/* Botão "Next" alinhado à direita */
+.next {
+  right: 10px; /* Posiciona o botão dentro da borda direita da imagem */
+  border-radius: 8px;
+}
+
+/* Efeito ao passar o mouse */
+.prev:hover, .next:hover {
+  background-color: rgba(0, 0, 0, 0.8); /* Fundo mais escuro ao passar o mouse */
+}
+
+/* Fading animation for slides */
+.mySlides.fade {
   animation-name: fade;
   animation-duration: 1.5s;
 }
 
 @keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
+  from { opacity: .4 }
+  to { opacity: 1 }
+}
+
+
+figure {
+  display: inline-block;
+  border: 0px dotted gray;
+  margin: 20px;
+  /* adjust as needed */
+}
+
+figure img {
+  vertical-align: top;
+}
+
+figure figcaption {
+  border: 1px dotted blue;
+  text-align: center;
+}
+
+aside p {
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
 }
